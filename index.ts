@@ -4,8 +4,6 @@ import commands from './commands';
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 client.on(Events.InteractionCreate, async (interaction) => {
-  console.log('test');
-
   if (!interaction.isChatInputCommand()) return;
 
   const command = commands.find(

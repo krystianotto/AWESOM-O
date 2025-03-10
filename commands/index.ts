@@ -1,19 +1,12 @@
 import { ChatInputCommandInteraction, SlashCommandBuilder } from 'discord.js';
 
-type CommandData = {
+import sourceCode from './source-code';
+import hello from './hello';
+import ping from './ping';
+
+export type CommandData = {
   definition: SlashCommandBuilder;
   callback: (interaction: ChatInputCommandInteraction) => Promise<void>;
 };
 
-export default [
-  {
-    definition: new SlashCommandBuilder()
-      .setName('ping')
-      .setDescription('Nie cieżko się domyślić co to robi.'),
-    async callback(interaction: ChatInputCommandInteraction) {
-      const name = interaction.user.username;
-
-      await interaction.reply(`${name}, twoja mama.`);
-    },
-  },
-] satisfies CommandData[];
+export default [ping, sourceCode, hello] satisfies CommandData[];
